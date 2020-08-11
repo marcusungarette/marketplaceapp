@@ -39,3 +39,12 @@ export const CartButtonText = styled.Text`
   flex: 1;
   margin-right: auto;
 `;
+
+export const CreateAccountButtonText = styled.Text`
+  flex: 1;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+`;

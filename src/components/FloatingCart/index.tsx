@@ -9,6 +9,7 @@ import {
   CartButton,
   CartButtonText,
   CartTotalPrice,
+  CreateAccountButtonText,
 } from './styles';
 
 import formatValue from '../../utils/formatValue';
@@ -24,13 +25,23 @@ const FloatingCart: React.FC = () => {
   const navigation = useNavigation();
 
   const cartTotal = useMemo(() => {
-    // TODO RETURN THE SUM OF THE PRICE FROM ALL ITEMS IN THE CART
+    const total = products.reduce((accumulator, product) => {
+      const productsSubtotal = product.price * product.quantity;
 
-    return formatValue(0);
+      return accumulator + productsSubtotal;
+    }, 0);
+
+    return formatValue(total);
   }, [products]);
 
   const totalItensInCart = useMemo(() => {
-    // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
+    const total = products.reduce((accumulator, product) => {
+      const productsQuantity = product.quantity;
+
+      return accumulator + productsQuantity;
+    }, 0);
+
+    return total;
 
     return 0;
   }, [products]);
@@ -43,6 +54,7 @@ const FloatingCart: React.FC = () => {
       >
         <FeatherIcon name="shopping-cart" size={24} color="#fff" />
         <CartButtonText>{`${totalItensInCart} itens`}</CartButtonText>
+        <CreateAccountButtonText>Checkout</CreateAccountButtonText>
       </CartButton>
 
       <CartPricing>
